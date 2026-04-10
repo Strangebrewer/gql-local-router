@@ -6,9 +6,9 @@
   "scripts": {
     "setup": "bash scripts/setup.sh",
     "compose": "rover supergraph compose --config supergraph.yaml --output supergraph-schema.graphql",
-    "start:subgraphs": "concurrently --names \"vehicles,home,recipes,projects\" \"pnpm -C ../gql-vehicles run start:dev\" \"pnpm -C ../gql-home run start:dev\" \"pnpm -C ../gql-recipes run start:dev\" \"pnpm -C ../gql-projects run start:dev\"",
+    "start:subgraphs": "concurrently --names \"home-maintenance,recipes,project-mgr\" \"pnpm -C ../gql-home-maintenance run start:dev\" \"pnpm -C ../gql-recipes run start:dev\" \"pnpm -C ../gql-project-mgr run start:dev\"",
     "start:router": "bash scripts/start-router.sh",
-    "dev": "concurrently --kill-others \"npm run start:subgraphs\" \"wait-on tcp:4001 tcp:4002 tcp:4003 tcp:4004 && npm run compose && npm run start:router\""
+    "dev": "concurrently --kill-others \"pnpm run start:subgraphs\" \"wait-on tcp:4001 tcp:4002 tcp:4003 && pnpm run compose && pnpm run start:router\""
   },
   "devDependencies": {
     "concurrently": "^8.0.0",

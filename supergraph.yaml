@@ -1,18 +1,14 @@
 federation_version: =2.7.0
 subgraphs:
-  vehicles:
+  home-maintenance:
     routing_url: http://localhost:4001/graphql
     schema:
       subgraph_url: http://localhost:4001/graphql
-  home:
+  recipes:
     routing_url: http://localhost:4002/graphql
     schema:
       subgraph_url: http://localhost:4002/graphql
-  recipes:
+  project-mgr:
     routing_url: http://localhost:4003/graphql
     schema:
       subgraph_url: http://localhost:4003/graphql
-  projects:
-    routing_url: http://localhost:4004/graphql
-    schema:
-      subgraph_url: http://localhost:4004/graphql

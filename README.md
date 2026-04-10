@@ -12,7 +12,7 @@ Apollo Federation 2 requires a composed supergraph schema — a single document 
 
 `pnpm run dev` handles the full sequence automatically:
 
-1. All four subgraphs start in parallel
+1. All three subgraphs start in parallel
 2. Once their ports are open, `rover` composes the supergraph schema
 3. Apollo Router starts on port 4000 against the composed schema
 
@@ -53,10 +53,9 @@ Apollo Router will be available at `http://localhost:4000/graphql`. The Apollo S
 | Service | Port |
 |---|---|
 | Apollo Router | 4000 |
-| gql-vehicles | 4001 |
-| gql-home | 4002 |
-| gql-recipes | 4003 |
-| gql-projects | 4004 |
+| gql-home-maintenance | 4001 |
+| gql-recipes | 4002 |
+| gql-project-mgr | 4003 |
 
 ---
 
@@ -77,8 +76,7 @@ This repo expects sibling directories within the same parent:
 ```
 graphql/
   gql-local-router/
-  gql-vehicles/
-  gql-home/
+  gql-home-maintenance/
   gql-recipes/
-  gql-projects/
+  gql-project-mgr/
 ```

@@ -8,8 +8,8 @@ Local development orchestration for the personal-enterprise GraphQL layer. Start
 
 ## How It Works
 
-1. `pnpm run dev` starts all four subgraphs in parallel via `concurrently`
-2. `wait-on` polls until all subgraph ports are open (4001–4004)
+1. `pnpm run dev` starts all three subgraphs in parallel via `concurrently`
+2. `wait-on` polls until all subgraph ports are open (4001–4003)
 3. `rover supergraph compose` introspects each subgraph and generates `supergraph-schema.graphql`
 4. Apollo Router starts against the composed schema on port 4000
 
@@ -39,10 +39,9 @@ Apollo Router and rover distribute separate binaries for Linux/Mac and Windows. 
 | Service | Port |
 |---|---|
 | Apollo Router | 4000 |
-| gql-vehicles | 4001 |
-| gql-home | 4002 |
-| gql-recipes | 4003 |
-| gql-projects | 4004 |
+| gql-home-maintenance | 4001 |
+| gql-recipes | 4002 |
+| gql-project-mgr | 4003 |
 
 These are hardcoded in `supergraph.yaml`, `router.yaml`, and the `start:subgraphs` script. If a port needs to change, update all three.
 
@@ -55,10 +54,9 @@ This repo assumes sibling directories in the same parent folder:
 ```
 graphql/
   gql-local-router/   ← this repo
-  gql-vehicles/
-  gql-home/
+  gql-home-maintenance/
   gql-recipes/
-  gql-projects/
+  gql-project-mgr/
 ```
 
 The `start:subgraphs` script uses `pnpm -C ../gql-*` to start each subgraph. Each subgraph must have its own `.env.local` configured before running.
