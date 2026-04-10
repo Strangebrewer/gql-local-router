@@ -38,6 +38,8 @@ Both are platform-aware — `setup.sh` detects your OS and installs the correct 
 
 Each subgraph needs its own `.env.local` before this will work. See each subgraph's `.env.example` for required variables.
 
+Copy `.env.example` to `.env.local` in this repo and add your RSA private key — this is used only for generating test tokens locally.
+
 ```bash
 pnpm install
 pnpm run setup
@@ -45,6 +47,18 @@ pnpm run dev
 ```
 
 Apollo Router will be available at `http://localhost:4000/graphql`. The Apollo Sandbox explorer is enabled at the same URL.
+
+---
+
+## Generating a Test JWT
+
+All resolvers require authentication. To generate a Bearer token for use in the Sandbox:
+
+```bash
+pnpm run token
+```
+
+Paste the output into the Sandbox Authorization header as `Bearer <token>`. Tokens are valid for 24 hours.
 
 ---
 

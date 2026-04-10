@@ -2,3 +2,4 @@ node_modules/
 router
 router.exe
 supergraph-schema.graphql
+.env.local

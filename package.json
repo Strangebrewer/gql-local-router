@@ -5,13 +5,16 @@
   "packageManager": "pnpm@10.12.4",
   "scripts": {
     "setup": "bash scripts/setup.sh",
-    "compose": "rover supergraph compose --config supergraph.yaml --output supergraph-schema.graphql",
+    "compose": "rover supergraph compose --config supergraph.yaml --output supergraph-schema.graphql --elv2-license accept",
     "start:subgraphs": "concurrently --names \"home-maintenance,recipes,project-mgr\" \"pnpm -C ../gql-home-maintenance run start:dev\" \"pnpm -C ../gql-recipes run start:dev\" \"pnpm -C ../gql-project-mgr run start:dev\"",
     "start:router": "bash scripts/start-router.sh",
-    "dev": "concurrently --kill-others \"pnpm run start:subgraphs\" \"wait-on tcp:4001 tcp:4002 tcp:4003 && pnpm run compose && pnpm run start:router\""
+    "dev": "concurrently --kill-others \"pnpm run start:subgraphs\" \"wait-on tcp:4001 tcp:4002 tcp:4003 && pnpm run compose && pnpm run start:router\"",
+    "token": "node scripts/generate-token.js"
   },
   "devDependencies": {
     "concurrently": "^8.0.0",
+    "dotenv": "^16.0.0",
+    "jsonwebtoken": "^9.0.0",
     "wait-on": "^7.0.0"
   }
 }

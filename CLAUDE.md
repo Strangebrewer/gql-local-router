@@ -72,6 +72,22 @@ The `start:subgraphs` script uses `pnpm -C ../gql-*` to start each subgraph. Eac
 
 ---
 
+## Generating a Test JWT
+
+All resolvers require a Bearer token. To generate one for local testing:
+
+1. Copy `.env.example` to `.env.local` and add your RSA private key (PKCS#1) and a test user ID
+2. Run:
+```bash
+pnpm run token
+```
+
+Paste the output into the Apollo Sandbox Authorization header as `Bearer <token>`. Tokens are valid for 24 hours.
+
+The private key in `.env.local` is for local dev only — it does not need to match any deployed key, but the subgraphs' `JWT_PUBLIC_KEY` must correspond to whatever private key you use here.
+
+---
+
 ## Scripts
 
 | Script | Description |
@@ -81,3 +97,4 @@ The `start:subgraphs` script uses `pnpm -C ../gql-*` to start each subgraph. Eac
 | `pnpm run start:subgraphs` | Starts all subgraphs in parallel |
 | `pnpm run start:router` | Starts Apollo Router (requires composed schema) |
 | `pnpm run dev` | Full local stack: subgraphs + compose + router |
+| `pnpm run token` | Generates a signed test JWT for use in Apollo Sandbox |

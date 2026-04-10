@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
   ROUTER_VERSION=$(curl -s https://api.github.com/repos/apollographql/router/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
   curl -L "https://github.com/apollographql/router/releases/download/v${ROUTER_VERSION}/router-v${ROUTER_VERSION}-x86_64-pc-windows-msvc.tar.gz" -o router.tar.gz
   tar -xzf router.tar.gz
-  mv dist/router.exe ./router.exe
+  find . -name "router.exe" -not -path "./router.exe" -exec mv {} ./router.exe \;
   rm -rf router.tar.gz dist/
 
   echo "Setup complete."
