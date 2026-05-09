@@ -22,3 +22,5 @@ headers:
     request:
       - propagate:
           named: Authorization
+      - propagate:
+          named: x-trace-id
