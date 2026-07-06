@@ -20,11 +20,13 @@ Local development orchestration for the personal-enterprise GraphQL layer. Start
 ## Prerequisites
 
 Run once after cloning:
+
 ```bash
 pnpm run setup
 ```
 
 `scripts/setup.sh` installs both required tools:
+
 - **rover CLI** — installed globally on the machine
 - **Apollo Router binary** — downloaded into this directory, gitignored
 
@@ -36,12 +38,12 @@ Apollo Router and rover distribute separate binaries for Linux/Mac and Windows. 
 
 ## Ports
 
-| Service | Port |
-|---|---|
-| Apollo Router | 4000 |
+| Service              | Port |
+| -------------------- | ---- |
+| Apollo Router        | 4000 |
 | gql-home-maintenance | 4001 |
-| gql-recipes | 4002 |
-| gql-project-mgr | 4003 |
+| gql-recipes          | 4002 |
+| gql-project-mgr      | 4003 |
 
 These are hardcoded in `supergraph.yaml`, `router.yaml`, and the `start:subgraphs` script. If a port needs to change, update all three.
 
@@ -78,6 +80,7 @@ All resolvers require a Bearer token. To generate one for local testing:
 
 1. Copy `.env.example` to `.env.local` and add your RSA private key (PKCS#1) and a test user ID
 2. Run:
+
 ```bash
 pnpm run token
 ```
@@ -90,11 +93,11 @@ The private key in `.env.local` is for local dev only — it does not need to ma
 
 ## Scripts
 
-| Script | Description |
-|---|---|
-| `pnpm run setup` | Installs rover CLI globally and downloads the Apollo Router binary into this directory |
-| `pnpm run compose` | Composes the supergraph schema from running subgraphs |
-| `pnpm run start:subgraphs` | Starts all subgraphs in parallel |
-| `pnpm run start:router` | Starts Apollo Router (requires composed schema) |
-| `pnpm run dev` | Full local stack: subgraphs + compose + router |
-| `pnpm run token` | Generates a signed test JWT for use in Apollo Sandbox |
+| Script                     | Description                                                                            |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `pnpm run setup`           | Installs rover CLI globally and downloads the Apollo Router binary into this directory |
+| `pnpm run compose`         | Composes the supergraph schema from running subgraphs                                  |
+| `pnpm run start:subgraphs` | Starts all subgraphs in parallel                                                       |
+| `pnpm run start:router`    | Starts Apollo Router (requires composed schema)                                        |
+| `pnpm run dev`             | Full local stack: subgraphs + compose + router                                         |
+| `pnpm run token`           | Generates a signed test JWT for use in Apollo Sandbox                                  |

@@ -21,6 +21,7 @@ Apollo Federation 2 requires a composed supergraph schema — a single document 
 ## Prerequisites
 
 Run once after cloning:
+
 ```bash
 pnpm run setup
 ```
@@ -64,12 +65,12 @@ Paste the output into the Sandbox Authorization header as `Bearer <token>`. Toke
 
 ## Ports
 
-| Service | Port |
-|---|---|
-| Apollo Router | 4000 |
+| Service              | Port |
+| -------------------- | ---- |
+| Apollo Router        | 4000 |
 | gql-home-maintenance | 4001 |
-| gql-recipes | 4002 |
-| gql-project-mgr | 4003 |
+| gql-recipes          | 4002 |
+| gql-project-mgr      | 4003 |
 
 ---
 
